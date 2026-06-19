@@ -39,6 +39,26 @@ class RadioController extends ChangeNotifier{
     }
   }
 
+  Future<void> playLocalTrack(String name, String urlOrFilePath) async {
+  try {
+    _currentStationName = name;
+    _isPlaying = true;
+    notifyListeners();
+
+    // just_audio treats regular internet URLs and local file system paths natively
+    if (urlOrFilePath.startsWith('http')) {
+      await _audioPlayer.setUrl(urlOrFilePath);
+    } else {
+      await _audioPlayer.setFilePath(urlOrFilePath);
+    }
+    _audioPlayer.play();
+  } catch (e) {
+    print("Error playing library track: $e");
+    _isPlaying = false;
+    notifyListeners();
+  }
+}
+
   void stopRadio() {
     _audioPlayer.stop();
     _isPlaying = false;
