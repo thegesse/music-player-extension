@@ -39,6 +39,11 @@ dependencies:
   dio: ^5.9.2
   just_audio: ^0.9.46
   just_audio_background: ^0.0.1-beta.15
+  provider: ^6.1.5+1
+  go_router: ^15.1.2
+  file_picker: ^11.0.2
+  platform: ^3.1.6
+  color: ^3.0.0
 
 dev_dependencies:
   flutter_test:
